@@ -40,7 +40,7 @@ contains the latest entrust version for Laravel 4.
 1) In order to install Laravel 5 Entrust, just add the following to your composer.json. Then run `composer update`:
 
 ```json
-"zizaco/entrust": "5.2.x-dev"
+"scsuoft/entrust": "master"
 ```
 
 2) Open your `config/app.php` and add the following to the `providers` array:
@@ -66,9 +66,9 @@ php artisan vendor:publish
 ```php
 'providers' => [
     'users' => [
-        'driver' => 'eloquent',
+        'driver' => 'shibboleth',
         'model' => Namespace\Of\Your\User\Model\User::class,
-        'table' => 'users',
+        'table' => 'user',
     ],
 ],
 ```
@@ -92,6 +92,7 @@ To further customize table names and model namespaces, edit the `config/entrust.
 
 ### User relation to roles
 
+For your local computer setup, you may need following mockup tables
 Now generate the Entrust migration:
 
 ```bash
@@ -106,10 +107,10 @@ php artisan migrate
 ```
 
 After the migration, four new tables will be present:
-- `roles` &mdash; stores role records
-- `permissions` &mdash; stores permission records
-- `role_user` &mdash; stores [many-to-many](http://laravel.com/docs/4.2/eloquent#many-to-many) relations between roles and users
-- `permission_role` &mdash; stores [many-to-many](http://laravel.com/docs/4.2/eloquent#many-to-many) relations between roles and permissions
+- `m_application_role` &mdash; stores role records
+- `m_application_permission` &mdash; stores permission records
+- `m_staff_application_role` &mdash; stores [many-to-many](http://laravel.com/docs/4.2/eloquent#many-to-many) relations between roles and users
+- `m_application_role_permissio` &mdash; stores [many-to-many](http://laravel.com/docs/4.2/eloquent#many-to-many) relations between roles and permissions
 
 ### Models
 
@@ -207,14 +208,10 @@ Let's start by creating the following `Role`s and `Permission`s:
 ```php
 $owner = new Role();
 $owner->name         = 'owner';
-$owner->display_name = 'Project Owner'; // optional
-$owner->description  = 'User is the owner of a given project'; // optional
 $owner->save();
 
 $admin = new Role();
 $admin->name         = 'admin';
-$admin->display_name = 'User Administrator'; // optional
-$admin->description  = 'User is allowed to manage and edit other users'; // optional
 $admin->save();
 ```
 
@@ -236,16 +233,12 @@ Now we just need to add permissions to those Roles:
 ```php
 $createPost = new Permission();
 $createPost->name         = 'create-post';
-$createPost->display_name = 'Create Posts'; // optional
 // Allow a user to...
-$createPost->description  = 'create new blog posts'; // optional
 $createPost->save();
 
 $editUser = new Permission();
 $editUser->name         = 'edit-user';
-$editUser->display_name = 'Edit Users'; // optional
 // Allow a user to...
-$editUser->description  = 'edit existing users'; // optional
 $editUser->save();
 
 $admin->attachPermission($createPost);

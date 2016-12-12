@@ -127,7 +127,7 @@ trait EntrustRoleTrait
             return $requireAll;
         } else {
             foreach ($this->cachedPermissions() as $permission) {
-                if ($permission->name == $name) {
+                if ($permission->m_application_permission_name == $name && $permission->m_application_permission_is_active) {
                     return true;
                 }
             }

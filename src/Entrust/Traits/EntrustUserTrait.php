@@ -106,7 +106,7 @@ trait EntrustUserTrait
             return $requireAll;
         } else {
             foreach ($this->cachedRoles() as $role) {
-                if ($role->name == $name) {
+                if ($role->m_application_role_name == $name && $role->m_application_role_is_active) {
                     return true;
                 }
             }

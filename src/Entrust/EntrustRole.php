@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Config;
 class EntrustRole extends Model implements EntrustRoleInterface
 {
     use EntrustRoleTrait;
-
+    public $timestamps = false;
     /**
      * The database table used by the model.
      *

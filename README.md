@@ -64,7 +64,7 @@ php artisan vendor:publish
 
 ```php
 'providers' => [
-    'users' => [
+    'user' => [
         'driver' => 'shibboleth',
         'model' => Namespace\Of\Your\User\Model\User::class,
         'table' => 'user',

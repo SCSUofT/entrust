@@ -9,7 +9,7 @@
 
 Entrust is a succinct and flexible way to add Role-based Permissions to **Laravel 5**.
 
-This is a customized version for SCS UOFT.
+This is a customized version for SCS UofT.
 
 ## Contents
 
@@ -66,8 +66,8 @@ php artisan vendor:publish
 'providers' => [
     'user' => [
         'driver' => 'shibboleth',
-        'model' => Namespace\Of\Your\User\Model\User::class,
-        'table' => 'user',
+        'model' => 'App\YourModel',
+        'table' => 'YourModelTable',
     ],
 ],
 ```
@@ -91,7 +91,10 @@ To further customize table names and model namespaces, edit the `config/entrust.
 
 ### User relation to roles
 
-For your local computer setup, you may need following mockup tables
+For your local computer setup, 
+YOU SHOULD HAVE MIMR2 ON YOUR LOCAL,
+IF YOU DO NOT,
+you may need following mockup tables
 Now generate the Entrust migration:
 
 ```bash

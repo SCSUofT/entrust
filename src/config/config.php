@@ -29,7 +29,7 @@ return [
     | This is the roles table used by Entrust to save roles to the database.
     |
     */
-    'roles_table' => 'm_application_roles',
+    'roles_table' => 'm_application_role',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ return [
     | between permissions and roles to the database.
     |
     */
-    'permission_role_table' => 'm_applicaiton_role_permission',
+    'permission_role_table' => 'm_application_role_permission',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,46 @@ return [
     | database.
     |
     */
-    'role_user_table' => 'm_staff_applicaiton_role',
+    'role_user_table' => 'm_staff_application_role',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Entrust user Foreign Key
+    |--------------------------------------------------------------------------
+    |
+    | This is the user foreign key used by Entrust
+    |
+    */
+    'user_foreign_key' => 'd_staff_id',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Entrust role Foreign Key
+    |--------------------------------------------------------------------------
+    |
+    | This is the role foreign key used by Entrust
+    |
+    */
+    'role_foreign_key' => 'm_application_role_id',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Entrust permission Foreign Key
+    |--------------------------------------------------------------------------
+    |
+    | This is the permission foreign key used by Entrust
+    |
+    */
+    'permission_foreign_key' => 'm_application_permission_id',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Entrust role_user Table
+    |--------------------------------------------------------------------------
+    |
+    | This is the role_user table used by Entrust to save assigned roles to the
+    | database.
+    |
+    */
+    'permission_name' => 'm_application_permission_name'
 ];

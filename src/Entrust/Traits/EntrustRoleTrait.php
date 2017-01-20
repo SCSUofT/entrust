@@ -127,7 +127,10 @@ trait EntrustRoleTrait
             return $requireAll;
         } else {
             foreach ($this->cachedPermissions() as $permission) {
-                if ($permission->m_application_permission_name == $name && $permission->m_application_permission_is_active) {
+                $permission_name = Config::get('entrust.permissions_table') . '_name';
+                $permission_is_active = Config::get('entrust.permissions_table' . 'is_active');
+
+                if ($permission->{$permission_name} == $name && $permission->{$permission_is_active}) {
                     return true;
                 }
             }

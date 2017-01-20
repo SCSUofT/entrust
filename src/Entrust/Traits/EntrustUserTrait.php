@@ -106,7 +106,10 @@ trait EntrustUserTrait
             return $requireAll;
         } else {
             foreach ($this->cachedRoles() as $role) {
-                if ($role->m_application_role_name == $name && $role->m_application_role_is_active) {
+                $role_name = Config::get('entrust.roles_table') . '_name';
+                $role_is_active = Config::get('entrust.roles_table') . '_is_active';
+
+                if ($role->{$role_name} == $name && $role->{$role_is_active}) {
                     return true;
                 }
             }
@@ -144,7 +147,8 @@ trait EntrustUserTrait
             foreach ($this->cachedRoles() as $role) {
                 // Validate against the Permission table
                 foreach ($role->cachedPermissions() as $perm) {
-                    if (str_is( $permission, $perm->m_application_permission_name) ) {
+                    $permission_name = Config::get('entrust.permissions_table') . '_name';
+                    if (str_is( $permission, $perm->{$permission_name}) ) {
                         return true;
                     }
                 }

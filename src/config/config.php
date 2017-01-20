@@ -19,7 +19,7 @@ return [
     | the role if it is in a different namespace.
     |
     */
-    'role' => 'App\Role',
+    'role' => 'App\AccessGroup',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     | This is the roles table used by Entrust to save roles to the database.
     |
     */
-    'roles_table' => 'm_application_role',
+    'roles_table' => 'm_access_group',
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     | database.
     |
     */
-    'users_table' => 'd_staff',
+    'users_table' => 'm_staff',
 
     /*
     |--------------------------------------------------------------------------
@@ -73,7 +73,7 @@ return [
     | database.
     |
     */
-    'permissions_table' => 'm_application_permission',
+    'permissions_table' => 'm_permission',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ return [
     | between permissions and roles to the database.
     |
     */
-    'permission_role_table' => 'm_application_role_permission',
+    'permission_role_table' => 'm_access_group_permission',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
     | database.
     |
     */
-    'role_user_table' => 'm_staff_application_role',
+    'role_user_table' => 'm_staff_access',
 
     /*
     |--------------------------------------------------------------------------
@@ -105,7 +105,7 @@ return [
     | This is the user foreign key used by Entrust
     |
     */
-    'user_foreign_key' => 'd_staff_id',
+    'user_foreign_key' => 'm_staff_id',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,7 +115,7 @@ return [
     | This is the role foreign key used by Entrust
     |
     */
-    'role_foreign_key' => 'm_application_role_id',
+    'role_foreign_key' => 'm_access_group_id',
 
     /*
     |--------------------------------------------------------------------------
@@ -125,16 +125,5 @@ return [
     | This is the permission foreign key used by Entrust
     |
     */
-    'permission_foreign_key' => 'm_application_permission_id',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Entrust role_user Table
-    |--------------------------------------------------------------------------
-    |
-    | This is the role_user table used by Entrust to save assigned roles to the
-    | database.
-    |
-    */
-    'permission_name' => 'm_application_permission_name'
+    'permission_foreign_key' => 'm_permission_id',
 ];

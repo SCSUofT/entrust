@@ -1,9 +1,8 @@
 # ENTRUST (Laravel 5 Package)
 
-[![Build Status](https://travis-ci.org/Zizaco/entrust.svg)](https://travis-ci.org/Zizaco/entrust)
 [![Version](https://img.shields.io/packagist/v/Zizaco/entrust.svg)](https://packagist.org/packages/zizaco/entrust)
 [![License](https://poser.pugx.org/zizaco/entrust/license.svg)](https://packagist.org/packages/zizaco/entrust)
-[![Total Downloads](https://img.shields.io/packagist/dt/zizaco/entrust.svg)](https://packagist.org/packages/zizaco/entrust)
+
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/cc4af966-809b-4fbc-b8b2-bb2850e6711e/small.png)](https://insight.sensiolabs.com/projects/cc4af966-809b-4fbc-b8b2-bb2850e6711e)
 
@@ -109,10 +108,10 @@ php artisan migrate
 ```
 
 After the migration, four new tables will be present:
-- `m_application_role` &mdash; stores role records
-- `m_application_permission` &mdash; stores permission records
-- `m_staff_application_role` &mdash; stores [many-to-many](http://laravel.com/docs/5.3/eloquent#many-to-many) relations between roles and users
-- `m_application_role_permission` &mdash; stores [many-to-many](http://laravel.com/docs/5.3/eloquent#many-to-many) relations between roles and permissions
+- `m_access_group` &mdash; stores role records
+- `m_permission` &mdash; stores permission records
+- `m_staff_access` &mdash; stores [many-to-many](http://laravel.com/docs/5.3/eloquent#many-to-many) relations between roles and users
+- `m_access_group_permission` &mdash; stores [many-to-many](http://laravel.com/docs/5.3/eloquent#many-to-many) relations between roles and permissions
 
 ### Models
 
@@ -130,11 +129,6 @@ class Role extends EntrustRole
 }
 ```
 
-The `Role` model has three main attributes:
-- `name` &mdash; Unique name for the Role, used for looking up role information in the application layer. For example: "admin", "owner", "employee".
-- `is_active` &mdash;
-- `update_time` &mdash;
-- `modby` &mdash;
 
 
 #### Permission
@@ -151,11 +145,6 @@ class Permission extends EntrustPermission
 }
 ```
 
-The `Permission` model has the same three attributes as the `Role`:
-- `name` &mdash; Unique name for the permission, used for looking up permission information in the application layer. For example: "create-post", "edit-user", "post-payment", "mailing-list-subscribe".
-- `is_active` &mdash;
-- `update_time` &mdash;
-- `modby` &mdash;
 
 
 

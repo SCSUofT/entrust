@@ -67,6 +67,7 @@ php artisan vendor:publish
         'driver' => 'shibboleth',
         'model' => 'App\YourModel',
         'table' => 'YourModelTable',
+        'primaryKey' => 'm_staff_id',
     ],
 ],
 ```

@@ -33,7 +33,9 @@ This is a special version for SCS UofT.
 
 ## Installation
 
-1) In order to install Laravel 5 Entrust, run composer require scsuoft/entrust
+1) In order to install Laravel 5 Entrust, run 
+```
+composer require scsuoft/entrust
 ```
 
 2) Open your `config/app.php` and add the following to the `providers` array:

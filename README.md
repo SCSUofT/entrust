@@ -4,11 +4,9 @@
 [![License](https://poser.pugx.org/zizaco/entrust/license.svg)](https://packagist.org/packages/zizaco/entrust)
 
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/cc4af966-809b-4fbc-b8b2-bb2850e6711e/small.png)](https://insight.sensiolabs.com/projects/cc4af966-809b-4fbc-b8b2-bb2850e6711e)
-
 Entrust is a succinct and flexible way to add Role-based Permissions to **Laravel 5**.
 
-This is a customized version for SCS UofT.
+This is a special version for SCS UofT.
 
 ## Contents
 
@@ -35,10 +33,7 @@ This is a customized version for SCS UofT.
 
 ## Installation
 
-1) In order to install Laravel 5 Entrust, just add the following to your composer.json. Then run `composer update`:
-
-```json
-"scsuoft/entrust": "dev-master"
+1) In order to install Laravel 5 Entrust, run composer require scsuoft/entrust
 ```
 
 2) Open your `config/app.php` and add the following to the `providers` array:

@@ -145,13 +145,19 @@ trait EntrustUserTrait
             return $requireAll;
         } else {
             foreach ($this->cachedRoles() as $role) {
-                // Validate against the Permission table
-                foreach ($role->cachedPermissions() as $perm) {
-                    $permission_name = Config::get('entrust.permissions_table') . '_name';
-                    if (str_is( $permission, $perm->{$permission_name}) ) {
-                        return true;
+                $role_is_active = Config::get('entrust.roles_table') . '_is_active';
+                if ($role->{$role_is_active}) {
+                    // Validate against the Permission table
+                    foreach ($role->cachedPermissions() as $perm) {
+                        $permission_name = Config::get('entrust.permissions_table') . '_name';
+                        $permission_is_active = Config::get('entrust.permissions_table') . '_is_active';
+
+                        if (str_is( $permission, $perm->{$permission_name}) && $perm->{$permission_is_active} ) {
+                            return true;
+                        }
                     }
                 }
+
             }
         }
 

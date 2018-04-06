@@ -36,15 +36,16 @@ class MigrationCommand extends Command
     {
         $this->laravel->view->addNamespace('entrust', substr(__DIR__, 0, -8).'views');
 
+        $applicationsTable   = Config::get('entrust.applications_table');
         $rolesTable          = Config::get('entrust.roles_table');
         $roleUserTable       = Config::get('entrust.role_user_table');
         $permissionsTable    = Config::get('entrust.permissions_table');
         $permissionRoleTable = Config::get('entrust.permission_role_table');
 
         $this->line('');
-        $this->info( "Tables: $rolesTable, $roleUserTable, $permissionsTable, $permissionRoleTable" );
+        $this->info( "Tables: $applicationsTable, $rolesTable, $roleUserTable, $permissionsTable, $permissionRoleTable" );
 
-        $message = "A migration that creates '$rolesTable', '$roleUserTable', '$permissionsTable', '$permissionRoleTable'".
+        $message = "A migration that creates '$applicationsTable', '$rolesTable', '$roleUserTable', '$permissionsTable', '$permissionRoleTable'".
         " tables will be created in database/migrations directory";
 
         $this->comment($message);
@@ -55,7 +56,7 @@ class MigrationCommand extends Command
             $this->line('');
 
             $this->info("Creating migration...");
-            if ($this->createMigration($rolesTable, $roleUserTable, $permissionsTable, $permissionRoleTable)) {
+            if ($this->createMigration($applicationsTable, $rolesTable, $roleUserTable, $permissionsTable, $permissionRoleTable)) {
 
                 $this->info("Migration successfully created!");
             } else {
@@ -77,7 +78,7 @@ class MigrationCommand extends Command
      *
      * @return bool
      */
-    protected function createMigration($rolesTable, $roleUserTable, $permissionsTable, $permissionRoleTable)
+    protected function createMigration($applicationsTable, $rolesTable, $roleUserTable, $permissionsTable, $permissionRoleTable)
     {
         $migrationFile = base_path("/database/migrations")."/".date('Y_m_d_His')."_entrust_setup_tables.php";
 
@@ -86,7 +87,7 @@ class MigrationCommand extends Command
         $usersTable = $userModel->getTable();
         $userKeyName = $userModel->getKeyName();
 
-        $data = compact('rolesTable', 'roleUserTable', 'permissionsTable', 'permissionRoleTable', 'usersTable', 'userKeyName');
+        $data = compact('applicationsTable', 'rolesTable', 'roleUserTable', 'permissionsTable', 'permissionRoleTable', 'usersTable', 'userKeyName');
 
         $output = $this->laravel->view->make('entrust::generators.migration')->with($data)->render();
 

@@ -10,6 +10,8 @@
 
 return [
     'app_id' => env('APP_ID', 0),
+    'applications_table' => 'm_application',
+
     /*
     |--------------------------------------------------------------------------
     | Entrust Role Model

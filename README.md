@@ -115,14 +115,14 @@ After the migration, four new tables will be present:
 
 #### Role
 
-Create a Role model inside `app/models/Role.php` using the following example:
+Create a Role model inside `app/models/AccessGroup.php` using the following example:
 
 ```php
 <?php namespace App;
 
 use Zizaco\Entrust\EntrustRole;
 
-class Accessgroup extends EntrustRole
+class AccessGroup extends EntrustRole
 {
 }
 ```

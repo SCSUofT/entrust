@@ -193,14 +193,14 @@ $role->forceDelete(); // Now force delete will work regardless of whether the pi
 ## Usage
 
 ### Concepts
-Let's start by creating the following `Role`s and `Permission`s:
+Let's start by creating the following `AccessGroup(role)`s and `Permission`s:
 
 ```php
-$owner = new Role();
+$owner = new AccessGroup();
 $owner->name         = 'owner';
 $owner->save();
 
-$admin = new Role();
+$admin = new AccessGroup();
 $admin->name         = 'admin';
 $admin->save();
 ```

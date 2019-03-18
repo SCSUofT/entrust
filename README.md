@@ -122,7 +122,7 @@ Create a Role model inside `app/models/Role.php` using the following example:
 
 use Zizaco\Entrust\EntrustRole;
 
-class Role extends EntrustRole
+class Accessgroup extends EntrustRole
 {
 }
 ```
